@@ -1,12 +1,38 @@
 import React from 'react';
+// Change Placeholder
+import placeholder from './../../assets/Placeholder_Image.jpeg';
 import './styles.scss';
+
 
 const Directory = probs => {
     return(
-        <div>
-            <h2>
-                Add Home Page Design Code Here
-            </h2>
+        <div className='Directory'>
+            <div className='wrap'>
+                <h2>
+                    Add Home Page Design Code Here
+                    {/* Sample Desgin Code */}
+                </h2>
+                <div
+                 className='item'
+                 style={{
+                    backgroundImage: `url(${placeholder})`
+                }}
+                >
+                    <a>
+                        Something
+                    </a>
+                </div>
+                <div
+                 className='item'
+                 style={{
+                    backgroundImage: `url(${placeholder})`
+                }}
+                >
+                     <a>
+                        Something
+                    </a>
+                </div>
+            </div>
         </div>
     );
 };
