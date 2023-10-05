@@ -1,0 +1,33 @@
+html{
+    font-size: 10px;
+}
+
+html,
+body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+*, ::before,::after{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body{
+    //Add font-family code here for fonts change properties accordingly
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1;
+}
+
+a {
+    text-decoration: none;
+}
+
+a,a:hover {
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
