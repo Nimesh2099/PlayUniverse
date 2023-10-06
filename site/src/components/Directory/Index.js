@@ -18,7 +18,7 @@ const Directory = probs => {
                     backgroundImage: `url(${placeholder})`
                 }}
                 >
-                    <a>
+                    <a href='#'>
                         Something
                     </a>
                 </div>
@@ -28,7 +28,7 @@ const Directory = probs => {
                     backgroundImage: `url(${placeholder})`
                 }}
                 >
-                     <a>
+                     <a href='#'>
                         Something
                     </a>
                 </div>
