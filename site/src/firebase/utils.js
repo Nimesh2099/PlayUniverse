@@ -1,9 +1,8 @@
 //Needs to Fix google login button
 
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
-
+import { getAuth, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore, doc, setDoc, getDoc, query, onSnapshot } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmRlc5E6W80IRZIgEPdjOVKW5rT5tNsJg",
@@ -25,37 +24,51 @@ GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 
 export const signInWithGoogle = async () => {
   try {
-    const result = await signInWithPopup(GoogleProvider);
+    const result = await auth.signInWithPopup(GoogleProvider);
+    // Access the user info from `result.user` if needed.
     return result;
   } catch (error) {
     throw error;
   }
 };
 
-export const handleUserProfile = async(userAuth,additionalData) =>{
-  if(!userAuth){
+
+
+export const handleUserProfile = async (userAuth, additionalData) => {
+  if (!userAuth) {
     return;
   }
-  const {uid} = userAuth;
+  const { uid } = userAuth;
 
-  const userRef = firestore.doc(`users/${uid}`);
-  const snaps = await userRef.get();
+  const userRef = doc(firestore, `users/${uid}`);
+  const userQuery = query(userRef); // Create a query using the doc reference
 
-  if(!snaps.exists){
-    const { displayName,email} = userAuth;
+  const snap = await getDoc(userRef);
+
+  if (!snap.exists()) {
+    const { displayName, email } = userAuth;
     const timestamp = new Date();
-    try{
-      await userRef.set({
+    try {
+      await setDoc(userRef, {
         displayName,
         email,
         createDate: timestamp,
-        ...additionalData
+        ...additionalData,
       });
-    }catch(e){
+    } catch (e) {
       console.log(e);
     }
   }
+
+  // Now, set up a listener to handle real-time updates using the query
+  const unsubscribe = onSnapshot(userQuery, (snapshot) => {
+    // Handle updates here if needed
+    // snapshot contains the latest data
+  });
+
   return userRef;
 };
+
+
 
 export { auth, firestore };

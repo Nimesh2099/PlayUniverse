@@ -67,11 +67,11 @@ class App extends Component {
               </HomePagelayout>
             } />
   
-            <Route path="/registration" element={
+            <Route path="/registration" element={currentUser ? (
+              <Navigate to="/" />) :(
               <Mainlayout currentUser={currentUser}>
                 <Registration />
-              </Mainlayout>
-            } />
+              </Mainlayout>)} />
   
             <Route path="/login" element={currentUser ? (
               <Navigate to="/" />) : (
