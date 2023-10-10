@@ -8,7 +8,7 @@ import Mainlayout from "./layouts/MainLayout";
 import HomePagelayout from "./layouts/HomePageLayout";
 
 // Pages
-import Homepage from "./pages/Homepage";
+import Homepage from "./pages/Homepage/Index";
 import Registration from "./pages/Registration/index"
 import LoginPage from "./pages/Loginpage";
 
