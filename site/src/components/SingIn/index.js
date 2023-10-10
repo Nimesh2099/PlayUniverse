@@ -68,13 +68,13 @@ class SignIn extends Component {
                   Log in
                 </Button>
 
-              {/* <div className="socialSignin">
+              <div className="socialSignin">
                 <div className="row">
                   <Button onClick={signInWithGoogle}>
                     Sign In with Google
                   </Button>
                 </div>
-              </div> */}
+              </div>
             </form>
           </div>
         </div>

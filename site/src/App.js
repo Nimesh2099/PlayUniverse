@@ -28,31 +28,31 @@ class App extends Component {
   authListener = null;
 
 
-  componentDidMount() {
-    this.authListener = auth.onAuthStateChanged(async (userAuth) => {
-      if (userAuth) {
-        const userRef = await handleUserProfile(userAuth);
-        userRef.onSnapshot((snapshot) => {
-          this.setState({
-            currentUser: {
-              id: snapshot.id,
-              ...snapshot.data(),
-            },
-          });
-        });
-      } else {
-        this.setState({
-          ...initialState
-        });
-      }
-    });
-  }
+  // componentDidMount() {
+  //   this.authListener = auth.onAuthStateChanged(async (userAuth) => {
+  //     if (userAuth) {
+  //       const userRef = await handleUserProfile(userAuth);
+  //       userRef.onSnapshot((snapshot) => {
+  //         this.setState({
+  //           currentUser: {
+  //             id: snapshot.id,
+  //             ...snapshot.data(),
+  //           },
+  //         });
+  //       });
+  //     } else {
+  //       this.setState({
+  //         ...initialState
+  //       });
+  //     }
+  //   });
+  // }
   
 
-  componentWillUnmount(){
-    this.authListener();
+  // componentWillUnmount(){
+  //   this.authListener();
 
-  }
+  // }
 
   render(){
     const{currentUser} = this.state;

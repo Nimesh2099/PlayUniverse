@@ -54,7 +54,7 @@ class Signup extends Component {
       const { user } = await createUserWithEmailAndPassword(auth, email, password);
 
       // Store additional user information (displayName) in the user profile
-      await handleUserProfile(user, { displayName });
+      // await handleUserProfile(user, { displayName });
 
       // Reset the form and clear any errors
       this.setState({
