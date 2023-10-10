@@ -1,8 +1,7 @@
-//Needs to Fix google login button
-
 import { initializeApp } from 'firebase/app';
 import { getAuth,signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore, doc, setDoc, getDoc, query, onSnapshot } from 'firebase/firestore';
+import { getFirestore} from 'firebase/firestore';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmRlc5E6W80IRZIgEPdjOVKW5rT5tNsJg",
@@ -29,46 +28,44 @@ auth.useDeviceLanguage();
 const signInWithGoogle = async () => {
   try {
     const result = await signInWithPopup(auth, provider);
-    // Access the user info from `result.user` if needed.
     return result;
   } catch (error) {
     throw error;
   }
 };
 
-export { auth, firestore,signInWithGoogle };
 
-// export const handleUserProfile = async (userAuth, additionalData) => {
-//   if (!userAuth) {
-//     return;
-//   }
-//   const { uid } = userAuth;
 
-//   const userRef = doc(firestore, `users/${uid}`);
-//   const userQuery = query(userRef); // Create a query using the doc reference
 
-//   const snap = await getDoc(userRef);
 
-//   if (!snap.exists()) {
-//     const { displayName, email } = userAuth;
+//Fix This
+// export const handleUserProfile = async (userAuth,addtionalData) =>{
+//   if(!userAuth) return;
+
+//   const {uid} = userAuth;
+
+//   const userRef = firestore.doc(`users/${uid}`);
+//   const snapShot =await  userRef.get()
+
+//   if(!snapShot.exists){
+//     const {displayName,email} = userAuth;
 //     const timestamp = new Date();
-//     try {
-//       await setDoc(userRef, {
+
+
+//     try{
+//       await userRef.set({
 //         displayName,
 //         email,
-//         createDate: timestamp,
-//         ...additionalData,
+//         createdDate: timestamp,
+//         ...addtionalData
 //       });
-//     } catch (e) {
-//       console.log(e);
+//     }catch(e)
+//     {
+//       console.log('Error Creating User', e);
 //     }
 //   }
-
-//   // Now, set up a listener to handle real-time updates using the query
-//   const unsubscribe = onSnapshot(userQuery, (snapshot) => {
-//     // Handle updates here if needed
-//     // snapshot contains the latest data
-//   });
-
 //   return userRef;
 // };
+
+export { auth, firestore,signInWithGoogle };
+
