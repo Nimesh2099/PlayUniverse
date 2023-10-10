@@ -1,7 +1,7 @@
 import React,{ Component } from "react";
 import { Route, Routes, Navigate } from 'react-router-dom';
 import './default.scss';
-import {auth,handleUserProfile} from './firebase/utils';
+import {auth} from './firebase/utils';
 
 // Layouts
 import Mainlayout from "./layouts/MainLayout";
@@ -27,32 +27,20 @@ class App extends Component {
 
   authListener = null;
 
+  componentDidMount() {
+    this.authListener =auth.onAuthStateChanged(userAuth=>{
+      if(!userAuth) return;
 
-  // componentDidMount() {
-  //   this.authListener = auth.onAuthStateChanged(async (userAuth) => {
-  //     if (userAuth) {
-  //       const userRef = await handleUserProfile(userAuth);
-  //       userRef.onSnapshot((snapshot) => {
-  //         this.setState({
-  //           currentUser: {
-  //             id: snapshot.id,
-  //             ...snapshot.data(),
-  //           },
-  //         });
-  //       });
-  //     } else {
-  //       this.setState({
-  //         ...initialState
-  //       });
-  //     }
-  //   });
-  // }
+      this.setState({
+        currentUser : userAuth
+      });
+    });
+  }
   
 
-  // componentWillUnmount(){
-  //   this.authListener();
-
-  // }
+  componentWillUnmount(){
+    this.authListener();
+  }
 
   render(){
     const{currentUser} = this.state;

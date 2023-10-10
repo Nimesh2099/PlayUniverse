@@ -22,16 +22,6 @@ const firestore = getFirestore(app);
 const GoogleProvider = new GoogleAuthProvider();
 GoogleProvider.setCustomParameters({ prompt: 'select_account' }); 
 
-// export const signInWithGoogle = async () => {
-//   try {
-//     const result = await auth.signInWithPopup(GoogleProvider);
-//     // Access the user info from `result.user` if needed.
-//     return result;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 const provider = new GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 auth.useDeviceLanguage();
@@ -46,15 +36,7 @@ const signInWithGoogle = async () => {
   }
 };
 
-
-
-
-
-
-
-
-
-
+export { auth, firestore,signInWithGoogle };
 
 // export const handleUserProfile = async (userAuth, additionalData) => {
 //   if (!userAuth) {
@@ -90,7 +72,3 @@ const signInWithGoogle = async () => {
 
 //   return userRef;
 // };
-
-
-
-export { auth, firestore,signInWithGoogle };
