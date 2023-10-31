@@ -67,5 +67,33 @@ const signInWithGoogle = async () => {
 //   return userRef;
 // };
 
+// import {  doc, getDoc, setDoc } from 'firebase/firestore';
+
+// export const handleUserProfile = async (userAuth, additionalData) => {
+//   if (!userAuth) return;
+
+//   const { uid } = userAuth;
+
+//   const userRef = doc(firestore, `users/${uid}`);
+//   const snapShot = await getDoc(userRef);
+
+//   if (!snapShot.exists()) {
+//     const { displayName, email } = userAuth;
+
+//     try {
+//       await setDoc(userRef, {
+//         displayName,
+//         email,
+//         createdDate: serverTimestamp(),
+//         ...additionalData,
+//       });
+//     } catch (e) {
+//       console.error('Error Creating User', e);
+//     }
+//   }
+//   return userRef;
+// };
+
+
 export { auth, firestore,signInWithGoogle };
 

@@ -6,8 +6,9 @@ import { auth } from './../../firebase/utils';
 
 import { Link } from 'react-router-dom';
 
-const Header = (props) => {
+const Header = props => {
   const { currentUser } = props;
+
   return (
     <header className='header'>
       <div className='wrap'>

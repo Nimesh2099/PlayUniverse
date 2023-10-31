@@ -52,13 +52,18 @@ class App extends Component {
   //Temp Fix
   componentDidMount(){
     this.authListener = auth.onAuthStateChanged(userAuth =>{
-      if(!userAuth) return;
+      if(!userAuth) {
+        this.setState({
+          ...initialState
+        });
+      };
 
       this.setState({
         currentUser: userAuth
       });
     });
   }
+  
   componentWillUnmount(){
     this.authListener();
   }
