@@ -27,40 +27,19 @@ class App extends Component {
 
   authListener = null;
 
-  // Need Fix here
-  // componentDidMount() {
-  //   this.authListener =auth.onAuthStateChanged(async userAuth=>{
-  //     if(userAuth)
-  //     {
-  //       const userRef = await handleUserProfile(userAuth);
-  //       userRef.onSnapshot(snapshot =>{
-  //         this.setState({
-  //           currentUser:{
-  //             id: snapshot.id,
-  //             ...snapshot.data(),
-  //           }
-  //         })
-  //       })
-  //     }
-
-  //     this.setState({
-  //       ...initialState
-  //     });
-  //   });
-  // }
-  
-  //Temp Fix
-  componentDidMount(){
-    this.authListener = auth.onAuthStateChanged(userAuth =>{
-      if(!userAuth) {
+  componentDidMount() {
+    this.authListener = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await handleUserProfile(userAuth);
+        // Assuming `handleUserProfile` returns the user data as an object
         this.setState({
-          ...initialState
+          currentUser: userRef,
         });
-      };
-
-      this.setState({
-        currentUser: userAuth
-      });
+      } else {
+        this.setState({
+          currentUser: null, // No user is signed in
+        });
+      }
     });
   }
   

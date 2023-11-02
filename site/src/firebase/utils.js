@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth,signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { getFirestore} from 'firebase/firestore';
-
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getFirestore, doc, setDoc, getDoc } from 'firebase/firestore';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDmRlc5E6W80IRZIgEPdjOVKW5rT5tNsJg",
@@ -12,14 +11,13 @@ const firebaseConfig = {
   appId: "1:12280594533:web:15602515bd2bdf052a468c"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
 const GoogleProvider = new GoogleAuthProvider();
-GoogleProvider.setCustomParameters({ prompt: 'select_account' }); 
+GoogleProvider.setCustomParameters({ prompt: 'select_account' });
 
 const provider = new GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -34,66 +32,31 @@ const signInWithGoogle = async () => {
   }
 };
 
+export const handleUserProfile = async (userAuth, additionalData) => {
+  if (!userAuth) return;
 
+  const { uid } = userAuth;
 
+  const userRef = doc(firestore, `users/${uid}`);
 
+  const snapShot = await getDoc(userRef);
 
-//Fix This
-// export const handleUserProfile = async (userAuth,addtionalData) =>{
-//   if(!userAuth) return;
+  if (!snapShot.exists()) {
+    const { displayName, email } = userAuth;
+    const timestamp = new Date();
 
-//   const {uid} = userAuth;
+    try {
+      await setDoc(userRef, {
+        displayName,
+        email,
+        createdDate: timestamp,
+        ...additionalData
+      });
+    } catch (e) {
+      console.log('Error Creating User', e);
+    }
+  }
+  return userRef;
+};
 
-//   const userRef = firestore.doc(`users/${uid}`);
-//   const snapShot =await  userRef.get()
-
-//   if(!snapShot.exists){
-//     const {displayName,email} = userAuth;
-//     const timestamp = new Date();
-
-
-//     try{
-//       await userRef.set({
-//         displayName,
-//         email,
-//         createdDate: timestamp,
-//         ...addtionalData
-//       });
-//     }catch(e)
-//     {
-//       console.log('Error Creating User', e);
-//     }
-//   }
-//   return userRef;
-// };
-
-// import {  doc, getDoc, setDoc } from 'firebase/firestore';
-
-// export const handleUserProfile = async (userAuth, additionalData) => {
-//   if (!userAuth) return;
-
-//   const { uid } = userAuth;
-
-//   const userRef = doc(firestore, `users/${uid}`);
-//   const snapShot = await getDoc(userRef);
-
-//   if (!snapShot.exists()) {
-//     const { displayName, email } = userAuth;
-
-//     try {
-//       await setDoc(userRef, {
-//         displayName,
-//         email,
-//         createdDate: serverTimestamp(),
-//         ...additionalData,
-//       });
-//     } catch (e) {
-//       console.error('Error Creating User', e);
-//     }
-//   }
-//   return userRef;
-// };
-
-
-export { auth, firestore,signInWithGoogle };
-
+export { auth, firestore, signInWithGoogle };
