@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 import './style.scss';
 import Button from "./../Forms/Button/index.js"; // Fixed typo 'Buttton' to 'Button'
 import FormInput from "../Forms/FormInput";
 import { signInWithGoogle,auth } from "../../firebase/utils";
+
+import AuthWrapper from "../AuthWrapper/index";
 
 
 const initialState = {
@@ -43,10 +46,14 @@ class SignIn extends Component {
 
     const{email,password} = this.state;
 
+    const cngAuthWrapper = {
+
+      headline: 'LogIn'
+
+    };
+
     return (
-      <div className="signin">
-        <div className="wrap">
-          <h2>Log In</h2>
+      <AuthWrapper {...cngAuthWrapper}>
           <div className="formWrap">
             <form onSubmit={this.handleSubmit}>
 
@@ -75,10 +82,13 @@ class SignIn extends Component {
                   </Button>
                 </div>
               </div>
+
+              <div className="links">
+                <Link to="/recovery">Forgot Password?</Link>
+              </div>
             </form>
           </div>
-        </div>
-      </div>
+      </AuthWrapper>
     );
   }
 }

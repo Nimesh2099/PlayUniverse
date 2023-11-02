@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import './style.scss';
 
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'; // Updated import
+import { auth,handleUserProfile } from './../../firebase/utils';
 
+
+import AuthWrapper from '../AuthWrapper/index';
 import FormInput from '../Forms/FormInput';
 import Button from './../Forms/Button';
-import { handleUserProfile } from './../../firebase/utils';
+
 
 const initialState = {
   displayName: '',
@@ -47,26 +49,18 @@ class Signup extends Component {
     }
 
     try {
-      // Initialize Firebase auth
-      const auth = getAuth();
+      
+      const {user} = await auth.createUserWithEmailAndPassword(email,password);
 
-      // Attempt to create a new user with email and password
-      const { user } = await createUserWithEmailAndPassword(auth, email, password);
+      await handleUserProfile(user,{displayName});
 
-      // Store additional user information (displayName) in the user profile
-      // await handleUserProfile(user, { displayName });
-
-      // Reset the form and clear any errors
       this.setState({
         ...initialState,
       });
 
-      // You can also perform additional actions, such as redirecting the user to a different page.
     } catch (e) {
       console.log(e);
-      // Handle any errors that occurred during user registration, such as displaying an error message to the user.
-
-      // Clear errors in case of an error
+    
       this.setState({
         errors: [],
       });
@@ -75,11 +69,13 @@ class Signup extends Component {
 
   render() {
     const { displayName, email, password, confirmPassword, errors } = this.state;
-    return (
-      <div className="signup">
-        <div className="wrap">
-          <h2>Sign Up</h2>
 
+    const cngAuthWrapper = {
+      headline: 'Sign Up'
+    }
+    return (
+      <AuthWrapper {...cngAuthWrapper}>
+        <div className="formWrap">
           {errors.length > 0 && (
             <ul>
               {errors.map((err, index) => {
@@ -91,45 +87,43 @@ class Signup extends Component {
               })}
             </ul>
           )}
-          <div className="formWrap">
-            <form onSubmit={this.handleFormSubmit}>
-              <FormInput
-                type="text"
-                name="displayName"
-                value={displayName}
-                placeholder="Full Name"
-                onChange={this.handleChange}
-              />
+          <form onSubmit={this.handleFormSubmit}>
+            <FormInput
+              type="text"
+              name="displayName"
+              value={displayName}
+              placeholder="Full Name"
+              onChange={this.handleChange}
+            />
 
-              <FormInput
-                type="email"
-                name="email"
-                value={email}
-                placeholder="Email"
-                onChange={this.handleChange}
-              />
+            <FormInput
+              type="email"
+              name="email"
+              value={email}
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
 
-              <FormInput
-                type="password"
-                name="password"
-                value={password}
-                placeholder="Password"
-                onChange={this.handleChange}
-              />
+            <FormInput
+              type="password"
+              name="password"
+              value={password}
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
 
-              <FormInput
-                type="password"
-                name="confirmPassword"
-                value={confirmPassword}
-                placeholder="Confirm Password"
-                onChange={this.handleChange}
-              />
+            <FormInput
+              type="password"
+              name="confirmPassword"
+              value={confirmPassword}
+              placeholder="Confirm Password"
+              onChange={this.handleChange}
+            />
 
-              <Button type="submit">Register</Button>
-            </form>
-          </div>
+            <Button type="submit">Register</Button>
+          </form>
         </div>
-      </div>
+       </AuthWrapper>
     );
   }
 }

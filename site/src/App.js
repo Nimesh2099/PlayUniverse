@@ -9,8 +9,9 @@ import HomePagelayout from "./layouts/HomePageLayout";
 
 // Pages
 import Homepage from "./pages/Homepage/index";
-import Registration from "./pages/Registration/index"
+import Registration from "./pages/Registration/index";
 import LoginPage from "./pages/Loginpage/index";
+import RecoveryPage from "./pages/RecoveryPage/index";
 
 const initialState = {
   currentUser: null
@@ -71,6 +72,12 @@ class App extends Component {
               <Mainlayout currentUser={currentUser}>
                 <LoginPage />
               </Mainlayout>)} />
+
+            <Route path="/recovery" element={
+              <Mainlayout currentUser={currentUser}>
+                <RecoveryPage />
+              </Mainlayout>
+            } />
   
           </Routes>
         </div>
