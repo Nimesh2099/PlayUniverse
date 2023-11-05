@@ -1,7 +1,7 @@
 import React from 'react'
 import './styles.scss';
 import {useState, useEffect} from 'react'
-import {collection, query, orderBy, onSnapshot, getDocs, deleteDoc, doc} from "firebase/firestore"
+import {collection, getDocs, deleteDoc, doc} from "firebase/firestore"
 import { firestore } from '../../firebase/utils';
 import AddGame from './addGame';
 
@@ -9,7 +9,7 @@ function GameTable() {
   //const staticPath = '../../assets/'
   const [games,setGames] = useState([])
   const [modalShow, setModalShow] = useState(false);
-  const [selectedGame, setSelectedGame] = useState({});
+  const [selectedGame, setSelectedGame] = useState(null);
   const getData = async()=>{
     const gamesCol = collection(firestore, 'games');
     const gameSnapshot = await getDocs(gamesCol);

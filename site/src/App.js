@@ -12,7 +12,7 @@ import Homepage from "./pages/Homepage/Index";
 import Registration from "./pages/Registration/index";
 import LoginPage from "./pages/Loginpage/index";
 import RecoveryPage from "./pages/RecoveryPage/index";
-import UserTable from "./components/Admin";
+import UserTable from "./components/AdminUsers";
 import GameTable from "./components/AdminGames";
 
 const initialState = {

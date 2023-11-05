@@ -1,4 +1,4 @@
-import { addDoc, arrayUnion, collection, doc, setDoc, updateDoc } from "firebase/firestore";
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -42,7 +42,6 @@ function AddGame(props) {
 
         const gameRef = doc(firestore, "games", props.selectedGame.id);
 
-        // Atomically add a new region to the "regions" array field.
         await updateDoc(gameRef, values);
     }
 
