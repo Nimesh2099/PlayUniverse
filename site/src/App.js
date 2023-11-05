@@ -8,10 +8,12 @@ import Mainlayout from "./layouts/MainLayout";
 import HomePagelayout from "./layouts/HomePageLayout";
 
 // Pages
-import Homepage from "./pages/Homepage/index";
+import Homepage from "./pages/Homepage/Index";
 import Registration from "./pages/Registration/index";
 import LoginPage from "./pages/Loginpage/index";
 import RecoveryPage from "./pages/RecoveryPage/index";
+import UserTable from "./components/Admin";
+import GameTable from "./components/AdminGames";
 
 const initialState = {
   currentUser: null
@@ -78,8 +80,21 @@ class App extends Component {
                 <RecoveryPage />
               </Mainlayout>
             } />
-  
+
+            <Route path="/admin-users" element={
+              <Mainlayout currentUser={currentUser}>
+                <UserTable />
+              </Mainlayout>
+            } />
+
+            <Route path="/admin-games" element={
+              <Mainlayout currentUser={currentUser}>
+                <GameTable />
+              </Mainlayout>
+            } />
           </Routes>
+
+          
         </div>
       </div>
     );

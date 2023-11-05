@@ -60,3 +60,33 @@
 
     
 }
+
+@media screen and (max-width: 768px) {
+
+    .Directory{
+        .wrap{
+            .gameList{
+                .gameItem:nth-of-type(even){
+                    grid-template-columns: 100%;
+                    column-gap: 20%;
+
+                    img{
+                        order: -1;
+                    }
+                }
+            }
+        }
+    }
+        
+    .intro {
+        padding: 2em;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .wrap {
+        .headImg {
+            height: 400px;
+        }
+    }
+}

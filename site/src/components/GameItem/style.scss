@@ -29,3 +29,16 @@
         white-space: nowrap;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .gameItem {
+        grid-template-columns: 100%;
+        column-gap: 20%;
+    }
+
+    .btnLearnMore {
+        font-size: 28px;
+        height: 60px;
+        line-height: 24px;
+    }
+}
