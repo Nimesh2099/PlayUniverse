@@ -1,0 +1,90 @@
+/* Import custom fonts, adjust colors, and define any custom styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 116vh;
+    background: black;
+    padding: 12%;
+  }
+  
+  .login-form {
+    width: 500px;
+    padding: 40px 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .login-header {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .input-field {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .remember-checkbox {
+    color: #555;
+  }
+  
+  .login-button {
+    width: 100%;
+    background: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px !important;
+    transition: background 0.3s;
+   font-weight: bold;
+  }
+  
+  .login-button:hover {
+    background: #2980b9;
+  }
+
+  
+
+  .social-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .divider {
+    text-align: center;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  
+  .google-button, .facebook-button {
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .google-button:hover, .facebook-button:hover {
+    background: #f4f4f4;
+    cursor: pointer;
+  }
+  
+  

@@ -1,0 +1,64 @@
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css");
+html {
+  font-size: 10px;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root,
+.App,
+.fullheiheght {
+  height: 100%;
+  background-color: black;
+}
+
+*,
+::before,
+::after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  //Add font-family code here for fonts change properties accordingly
+  font-size: 1.8rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a,
+a:hover {
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.ant-rate {
+  .ant-rate-star-half {
+    .ant-rate-star-second {
+      svg {
+        fill: white;
+      }
+    }
+  }
+  .ant-rate-star-zero {
+    .ant-rate-star-second {
+      svg {
+        fill: white;
+      }
+    }
+  }
+}

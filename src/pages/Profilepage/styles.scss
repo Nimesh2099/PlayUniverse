@@ -1,0 +1,20 @@
+.profile-container {
+  margin: 0px !important;
+  padding: 0px !important;
+  padding-top: 8.5rem !important;
+  overflow-y: hidden;
+  min-height: calc(100vh - 6.5rem);
+  display: flex;
+  flex-direction: column;
+  .profile-image {
+    display: flex;
+    justify-content: center;
+    .pro-img {
+      border-radius: 50%;
+    }
+  }
+  .name-title {
+    color: white;
+    text-align: center;
+  }
+}

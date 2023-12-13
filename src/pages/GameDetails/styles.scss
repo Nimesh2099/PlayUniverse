@@ -1,0 +1,79 @@
+.game-details-container {
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  .image-container0 {
+    .back-banner {
+      width: 100vw;
+      max-height: 100vh;
+      overflow: hidden;
+      object-fit: cover;
+      opacity: 0.8;
+    }
+    .play-btn-details {
+      position: absolute;
+      top: 50%;
+      left: 47%;
+      font-size: 56px;
+    }
+  }
+  .image-container0:hover {
+    .back-banner {
+      width: 100vw;
+      overflow: hidden;
+      object-fit: contain;
+      opacity: 0.5;
+    }
+    .play-btn-details {
+      position: absolute;
+      top: 50%;
+      left: 47%;
+      font-size: 56px;
+      color: white;
+    }
+  }
+  .game-title {
+    color: white;
+    padding-top: 20px;
+    padding-left: 20px;
+  }
+  .paragraph-desc {
+    color: white;
+    padding-left: 20px;
+  }
+  .rateings {
+    padding-left: 20px;
+  }
+  .comment {
+    margin-right: 50px;
+    margin-top: 0px;
+    width: 36vw;
+    align-self: flex-end;
+  }
+  .cmt-title {
+    color: white;
+    padding-top: 20px;
+    align-self: center;
+  }
+  .rating-div{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .cmnt-btn {
+    width: 200px;
+    align-self: flex-end;
+    margin-right: 50px;
+    margin-top: 20px;
+  }
+  .user-name {
+    color: white;
+    padding-left: 10px;
+  }
+  .cmnt-desc {
+    color: white;
+    padding-left: 40px;
+  }
+}

@@ -1,0 +1,80 @@
+.table-container {
+  height: calc(100vh - 14rem);
+  margin-top: 7.5rem;
+  overflow-y: scroll;
+  .user-table {
+    .ant-table {
+      background-color: black !important;
+      color: white !important;
+      .ant-table-content {
+        background-color: black !important;
+      }
+    }
+    .ant-table-thead > tr > th {
+      background-color: black !important;
+      color: white !important;
+    }
+    tr:hover {
+      background-color: black !important;
+    }
+    td:hover {
+      background-color: black !important;
+    }
+    .ant-table-cell {
+      background-color: black !important;
+    }
+    .ant-pagination {
+      .ant-pagination-item-link {
+        color: white !important;
+      }
+      .ant-pagination-item {
+        color: white !important;
+        border: 2px solid white !important;
+      }
+      .ant-pagination-item-active {
+        border: 2px solid white !important;
+      }
+      .ant-pagination-item-active a {
+        color: black !important;
+      }
+    }
+  }
+}
+
+.action-btn-delete {
+  border: 1px solid red !important;
+  color: red !important;
+}
+.action-btn-delete:hover {
+  border: 1px solid red !important;
+  color: red !important;
+}
+
+.action-btn-block {
+  border: 1px solid lightslategray !important;
+  color: lightslategray !important;
+}
+.action-btn-block:hover {
+  border: 1px solid lightslategray !important;
+  color: lightslategray !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

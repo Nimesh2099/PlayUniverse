@@ -1,0 +1,12 @@
+.game-card {
+  background-color: black;
+  .ant-card-body {
+    background-color: black !important;
+  }
+  .ant-card-actions {
+    background-color: black !important;
+  }
+}
+.game-card:hover {
+  scale: 1.1;
+}
